@@ -11,11 +11,12 @@ function onClick(e) {
             return response.json();
         }).then(function (json) {
             const rando = json.results[0];
+            console.log(rando.name.first);
             friend += "<p>Hi! My name is " + rando.name.first + 
                 ", and I'm from " + rando.location.city + 
                 ". We're going to be best friends!!</p>";
+            document.getElementById('results').innerHTML = friend;
         });
-    document.getElementById('results').innerHTML = friend;
 }
 
 function randomAvatarType() {
