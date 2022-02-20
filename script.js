@@ -6,17 +6,10 @@ function onClick(e) {
     let randomAvatar = randomAvatarType();
     let picurl = "https://avatars.dicebear.com/api/" + randomAvatar + "/" + seed + ".svg?mood[]=" + mood;
     friend = '<img src="' + picurl + '" width="300px" height="300px">';
-    fetch("https://randomuser.me/api/")
+    fetch("https://randomuser.me/api/", {dataType: 'json'})
         .then(function (response) {
-            if (response.status != 200) {
-                console.log("badbadnotgood");
-                return {
-                  text: "Error calling the Numbers API service: " + response.statusText
-                }
-              }
             return response.json();
         }).then(function (json) {
-            console.log(json.results.name.first);
             friend += "<p>Hi! My name is " + json.results.name.first + 
                 ", and I'm from " + json.results.location.city + 
                 ". We're going to be best friends!!</p>";
