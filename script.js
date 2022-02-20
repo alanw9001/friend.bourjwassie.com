@@ -10,8 +10,8 @@ function onClick(e) {
         .then(function (response) {
             return response.json();
         }).then(function (json) {
-            let name = (((json || {}).results || {}).name || {}).first;
-            let city = (((json || {}).results || {}).location || {}).city;
+            let name = ((json || {}).name || {}).first;
+            let city = ((json || {}).location || {}).city;
             friend += "<p>Hi! My name is " + name + 
                 ", and I'm from " + city + 
                 ". We're going to be best friends!!</p>";
