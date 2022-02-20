@@ -10,8 +10,10 @@ function onClick(e) {
         .then(function (response) {
             return response.json();
         }).then(function (json) {
-            friend += "<p>Hi! My name is " + json.results.name.first + 
-                ", and I'm from " + json.results.location.city + 
+            let name = (((json || {}).results || {}).name || {}).first;
+            let city = (((json || {}).results || {}).location || {}).city;
+            friend += "<p>Hi! My name is " + name + 
+                ", and I'm from " + city + 
                 ". We're going to be best friends!!</p>";
         });
     document.getElementById('results').innerHTML = friend;
